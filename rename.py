@@ -61,7 +61,7 @@ def rename_files(list_of_files):
         error_check = input("Enter y to accept the changes").lower()
         if(error_check  ==  'y' and debug):
           #renames if user specifies error check
-          os.rename(sys.argv[1]+"\\"+old_fname,sys.argv[1]+"\\"+file_name)
+          os.rename(sys.argv[1]+"/"+old_fname,sys.argv[1]+"/"+file_name)
           print(f"Success...File {file_name}  has been  created")
         else:
           print("Filename change not accepted, moving to next file...")
