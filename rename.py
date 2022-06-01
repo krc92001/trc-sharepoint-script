@@ -14,17 +14,19 @@ def create_file_list(directory):
   
 
   unfiltered_list = os.listdir(directory)
+  filtered_list = [] # initial list
+  
   #filters list for files containing illegal charts
   for file in unfiltered_list:
-    if not re.match(illegal_chars, file):
-      print(f"filename: {file} is acceptable")
-      unfiltered_list.remove(file)
+
+    if re.match(illegal_chars, file):
+      print(f"filename {file} contains illegal characters")
+      filtered_list.append(file)
     else :
-      print(f"filename {file} contains illegal characters: ")
-      pass
+      print(f"filename: {file} is acceptable")
     if slow_input :
       input("Press any key to continue")
-  return unfiltered_list
+  return filtered_list
 
 def rename_files(list_of_files):
   """
@@ -59,7 +61,7 @@ def rename_files(list_of_files):
         error_check = input("Enter y to accept the changes").lower()
         if(error_check  ==  'y' and debug):
           #renames if user specifies error check
-          os.rename(sys.argv[1]+old_fname,sys.argv[1]+file_name)
+          os.rename(sys.argv[1]+"\\"+old_fname,sys.argv[1]+"\\"+file_name)
           print(f"Success...File {file_name}  has been  created")
         else:
           print("Filename change not accepted, moving to next file...")
