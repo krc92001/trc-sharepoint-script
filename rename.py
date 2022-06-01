@@ -53,10 +53,10 @@ def rename_files(list_of_files):
   
   for file_name in list_of_files:
     # iterate through list of files with illegal names
-    for char in illegal_chars:
-      if char in file_name:
+    for chars in illegal_chars:
+      if chars in file_name:
         old_fname = file_name
-        file_name = file_name.replace(char, illegal_dict["char"])
+        file_name = file_name.replace(chars, illegal_dict["char"])
         print(f'File: {old_fname} is going to be renamed to: {file_name}')
         error_check = input("Enter y to accept the changes").lower()
         if(error_check  ==  'y' and debug):
