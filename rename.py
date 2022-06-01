@@ -15,11 +15,11 @@ def create_file_list(directory):
 
   unfiltered_list = os.listdir(directory)
   filtered_list = [] # initial list
-  
+
   #filters list for files containing illegal charts
   for file in unfiltered_list:
 
-    if re.match(illegal_chars, file):
+    if re.search(illegal_chars, file):
       print(f"filename {file} contains illegal characters")
       filtered_list.append(file)
     else :
