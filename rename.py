@@ -14,13 +14,14 @@ def create_file_list(directory):
   
 
   unfiltered_list = os.listdir(directory)
+
   filtered_list = [] # initial list
 
   #filters list for files containing illegal charts
   for file in unfiltered_list:
 
-    if re.search(illegal_chars, file):
-      print(f"filename {file} contains illegal characters")
+    if re.search(illegal_chars, file) or file[0] == ' ' or file[len(file)-1] == ' ':
+      print(f"filename {file} contains illegal characters or trailing white space")
       filtered_list.append(file)
     else :
       print(f"filename: {file} is acceptable")
@@ -35,7 +36,7 @@ def rename_files(list_of_files):
   """
   debug = True # set false for no confirmation
 
-  illegal_chars = ["\"","*",":","<",">","?","/","\\","|","]","+"]
+  illegal_chars = ["\"","*",":","<",">","?","/","\\","|"]
   #dicitonary for replacement can be modified to different chars
   illegal_dict = {
   "\"": "",
@@ -46,9 +47,7 @@ def rename_files(list_of_files):
   "?": "_",
   "/": "-",
   "\\": "-",
-  "|": "-",
-  "]": "x",
-  "+": "x"
+  "|": "-"
 }
   
   for file_name in list_of_files:
